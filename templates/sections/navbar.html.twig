@@ -1,0 +1,62 @@
+<!-- Navbar -->
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-{{ navbarColor|default('dark') }} navbar-stick-dark" data-navbar="sticky">
+    <div class="container">
+
+        <div class="navbar-left">
+            <button class="navbar-toggler" type="button"><span class="navbar-toggler-icon"></span></button>
+            <a class="navbar-brand" href="{{ path('homepage') }}">
+                <img class="logo p-2" src="{{ asset('build/images/logo.svg') }}" alt="logo">
+            </a>
+        </div>
+
+        <section class="navbar-mobile">
+            <span class="navbar-divider d-mobile-none"></span>
+
+            <ul class="nav nav-navbar">
+
+                <li class="nav-item">
+                    <a class="nav-link {% if (app.request.pathInfo == path('homepage')) %}active{% endif %}"
+                       href="{{ path('homepage') }}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if (app.request.pathInfo == path('admin')) %}active{% endif %}"
+                       href="{{ path('admin') }}">Admin</a>
+                </li>
+            </ul>
+        </section>
+        {% if is_granted('ROLE_USER') %}
+            <a class="btn btn-xs btn-round btn-danger" href="{{ path('logout') }}">Logout?</a>
+        {% endif %}
+    </div>
+</nav>
+
+{#
+<nav class="navbar navbar-expand-lg navbar-{{ navbarColor|default('dark') }} navbar-stick-dark" data-navbar="sticky">
+    <div class="container">
+
+        <div class="navbar-left">
+            <button class="navbar-toggler" type="button"><span class="navbar-toggler-icon"></span></button>
+            <a class="navbar-brand" href="{{ path('homepage') }}">
+                <img class="logo-dark" src="{{ asset('build/images/logo-dark.png') }}" alt="logo">
+                <img class="logo-light" src="{{ asset('build/images/logo-light.png') }}" alt="logo">
+            </a>
+        </div>
+
+        <section class="navbar-mobile">
+            <nav class="nav nav-navbar ml-auto">
+                    <a class="nav-link {% if (app.request.pathInfo == path('homepage')) %}active{% endif %}"
+                       href="{{ path('homepage') }}">Home</a>
+                    <a class="nav-link {% if (app.request.pathInfo == path('admin')) %}active{% endif %}"
+                       href="{{ path('admin') }}">Admin</a>
+            </nav>
+        </section>
+
+        <a class="btn btn-xs btn-round btn-error" href="{{ path('logout') }}">logout?</a>
+
+    </div>
+</nav><!--
+
+
+/.navbar -->
+#}

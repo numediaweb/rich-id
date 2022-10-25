@@ -1,0 +1,34 @@
+{% if showFooterNav is not defined or showFooterNav == true %}
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row gap-y align-items-center">
+
+                <div class="col-6 col-lg-3">
+                    <a href="{{ path('homepage') }}">
+                        <img class="footer-nav logo p-2" src="{{ asset('build/images/logo.svg') }}" alt="logo">
+                    </a>
+                </div>
+
+                <div class="col-6 col-lg-3 text-right order-lg-last">
+                    <div class="social">
+                        <a class="social-facebook" href="#"><i class="fa fa-facebook"></i></a>
+                        <a class="social-twitter" href="#"><i class="fa fa-twitter"></i></a>
+                        <a class="social-instagram" href="#"><i class="fa fa-instagram"></i></a>
+                        <a class="social-dribbble" href="#"><i class="fa fa-dribbble"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="nav nav-bold nav-uppercase nav-trim justify-content-lg-center">
+                        <a class="nav-link {% if (app.request.pathInfo == path('homepage')) %}active{% endif %}"
+                           href="{{ path('homepage') }}">Home</a>
+                        <a class="nav-link {% if (app.request.pathInfo == path('admin')) %}active{% endif %}"
+                           href="{{ path('admin') }}">Admin</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </footer><!-- /.footer -->
+{% endif %}

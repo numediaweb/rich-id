@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{# Body HTML tag #}
+{% block body_tag %}
+<body>
+{% endblock %}
+
+{# Page content #}
+{% block page_content %}
+
+    {# Header #}
+    {% include 'sections/admin_header.html.twig' %}
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <section class="section">
+            <div class="container">
+                <div class="row gap-y">
+                    <div class="col-lg-2">
+                        <nav class="nav flex-column">
+                            <a class="btn btn-label btn-primary mb-2 {% if (app.request.pathInfo == path('admin')) %}disabled{% endif %}"
+                               href="{{ path('admin') }}">
+                                <label><i class="fa fa-list lead-1 mr-2"></i></label>
+                                <span>List All</span>
+                            </a>
+                            <a class="btn btn-label btn-success mb-2 {% if (app.request.pathInfo == path('admin_user_new')) %}disabled{% endif %}"
+                               href="{{ path('admin_user_new') }}">
+                                <label><i class="fa fa-user-plus lead-1 mr-2"></i></label>
+                                <span>Add New</span>
+                            </a>
+                        </nav>
+                    </div>
+                    <div class="col-lg-10">
+
+                        {# sections #}
+                        {% include 'sections/'~ template_part ~'.html.twig' %}
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}

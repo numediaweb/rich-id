@@ -1,0 +1,8 @@
+<div class="col-md-8">
+
+    {% if error is defined %}
+       <p class="lead-1 my-6 text-danger font-weight-700">{{ error }}</p>
+    {% endif %}
+
+    {{ form(userForm) }}
+</div>
