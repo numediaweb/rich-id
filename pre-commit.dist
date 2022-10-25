@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+#
+# The built-in scripts are mostly shell and PERL scripts, but you
+# can use any scripting language you like as long as it can be run
+# as an executable.
+#
+# An example hook script to verify what is about to be committed.
+# Called by "git commit" with no arguments.  The hook should
+# exit with non-zero status after issuing an appropriate message if
+# it wants to stop the commit.
+
+# Get some fancy colors :)
+GREEN='\033[0;32m'
+RED='\033[1;31m'
+CYAN='\033[0;36m'
+NA='\033[0m'
+
+printf "\n\t${CYAN}PHP-CS-Fixer pre commit hook start..${NA}\n\n"
+
+PHP_CS_FIXER="tools/php-cs-fixer/vendor/bin/php-cs-fixer"
+PHP_CS_CONFIG=".php-cs-fixer.php"
+
+
+# Check if the PHP CS Fixer exists
+HAS_PHP_CS_FIXER=false
+
+if [ -x $PHP_CS_FIXER ]; then
+    HAS_PHP_CS_FIXER=true
+fi
+
+if $HAS_PHP_CS_FIXER; then
+
+    # Remove the --cached option to list also non staged changes
+    #CHANGED_FILES=$(git diff --cached --name-only --diff-filter=ACM -- '*.php')
+    CHANGED_FILES=$(git diff --name-only --diff-filter=ACM -- '*.php')
+
+    if [ -n "$CHANGED_FILES" ]; then
+        printf "\n\t${GREEN}Fixing changed files...${NA}\n\n"
+        printf "\n\t${GREEN}Executing $PHP_CS_FIXER fix --config=\"$PHP_CS_CONFIG\" $CHANGED_FILES ${NA}\n\n"
+        $PHP_CS_FIXER fix --config="$PHP_CS_CONFIG" $CHANGED_FILES;
+
+    #    You can add those files automatically, but I prefer to see the changes before adding them
+    #    git add $CHANGED_FILES;
+    else
+        printf "\n\t${CYAN}No changed files found!${NA}\n\n"
+    fi
+else
+    printf "\n\t${RED}PHP CS Fixer not found at '${PHP_CS_FIXER}'!${NA}\n\n\tPlease install php-cs-fixer, see:\n\t${GREEN}https://github.com/FriendsOfPHP/PHP-CS-Fixer#globally-homebrew${NA}\n\n"
+    exit 1
+fi
+
+printf "\n\t${CYAN}PHP-CS-Fixer pre commit hook finish.${NA}\n\n"
+
+exit 0
