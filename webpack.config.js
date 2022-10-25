@@ -57,7 +57,7 @@ Encore
          from: './assets/images',
 
          // only copy files matching this pattern
-         pattern: /\.(png|jpg|jpeg)$/,
+         pattern: /\.(png|jpg|jpeg|svg)$/,
 
          // optional target path, relative to the output dir
          to: 'images/[path][name].[ext]',
