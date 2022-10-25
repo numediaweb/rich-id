@@ -1,0 +1,73 @@
+### Symfony/framework-bundle ###
+/.env.local
+/.env.prod
+/.env.local.php
+/.env.*.local
+/config/secrets/prod/prod.decrypt.private.php
+/public/bundles/
+/public/uploads/
+/var/
+/vendor/
+.php_cs.cache
+/public/bundles/
+/tools/php-cs-fixer/vendor/
+
+###> friendsofphp/php-cs-fixer ###
+/.php_cs.cache
+
+### Node and bower modules
+/assets/tools/node_modules/
+assets/build/*
+!assets/build/bower.json
+!assets/build/config.rb
+!assets/build/Gruntfile.js
+!assets/build/package.json
+
+### Intellij
+# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm
+.idea/
+
+### Numerous always-ignore extensions
+*.diff
+*.err
+*.orig
+*.ods
+*.ods#
+*.log
+*.rej
+*.swo
+*.swp
+*.zip
+*.vi
+*~
+
+### OS or Editor folders
+.DS_Store
+._*
+Thumbs.db
+desktop.ini
+.cache
+.project
+.settings
+.tmproj
+*.esproj
+nbproject
+*.sublime-project
+*.sublime-workspace
+
+###> lexik/jwt-authentication-bundle ###
+/config/jwt/*.pem
+###< lexik/jwt-authentication-bundle ###
+
+###> webhooks ###
+/config/webhook/*.json
+###< webhooks ###
+
+.php-cs-fixer.cache
+
+###> symfony/webpack-encore-bundle ###
+/node_modules/
+/public/build/
+npm-debug.log
+yarn-error.log
+###< symfony/webpack-encore-bundle ###
