@@ -23,11 +23,13 @@
                                 <label><i class="fa fa-list lead-1 mr-2"></i></label>
                                 <span>List All</span>
                             </a>
-                            <a class="btn btn-label btn-success mb-2 {% if (app.request.pathInfo == path('admin_user_new')) %}disabled{% endif %}"
-                               href="{{ path('admin_user_new') }}">
-                                <label><i class="fa fa-user-plus lead-1 mr-2"></i></label>
-                                <span>Add New</span>
-                            </a>
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <a class="btn btn-label btn-success mb-2 {% if (app.request.pathInfo == path('admin_user_new')) %}disabled{% endif %}"
+                                   href="{{ path('admin_user_new') }}">
+                                    <label><i class="fa fa-user-plus lead-1 mr-2"></i></label>
+                                    <span>Add New</span>
+                                </a>
+                            {% endif %}
                         </nav>
                     </div>
                     <div class="col-lg-10">

@@ -32,6 +32,9 @@ class UserController extends AbstractController
         ManagerRegistry $doctrine,
         UserPasswordHasherInterface $userPasswordHasher
     ): Response {
+        // only admins can have access
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         $entityManager = $doctrine->getManager();
 
         // creates an user object

@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Access denied{% endblock %}
+
+{# Navbar color #}
+{% set navbarColor = 'light' %}
+
+{# Navbar color #}
+{% set showFooterNav = false %}
+
+{# Page content #}
+{% block page_content %}
+    <!-- Header -->
+    <header id="home" class="header text-white h-fullscreen"
+            style="background-image: url({{ asset('build/images/403.jpg') }})"
+            data-overlay="1">
+        {#<div class="container">
+            <div class="row align-items-center h-100">
+
+                <div class="col-md-5">
+                    <h1 class="display-3">Access Denied!</h1>
+                    <p class="lead-4">Error 403</p>
+                    <p class="lead-2 fw-400 mb-7">It means the page you were trying to reach is forbidden for one of two reasons: Either there is a removal or restriction of access permissions from the client-side, or there's an accidental misconfiguration of the web server.</p>
+                    <a class="btn btn-xl btn-round btn-info" href="{{ path('homepage') }}">Go to the homepage</a>
+                </div>
+
+            </div>
+        </div>#}
+    </header><!-- /.header -->
+{% endblock %}
