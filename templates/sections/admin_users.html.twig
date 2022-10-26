@@ -1,22 +1,26 @@
 <div class="container">
-    <div class="row gap-y">
+    <div data-provide="shuffle">
 
-        {% for user in users %}
-            <div class="col-6 col-lg-4">
-                <a class="portfolio-1" href="{{ path('admin_user', {'id': user.id}) }}">
-                    <span class="iconbox iconbox-sq iconbox-xxl"><img src="https://i.pravatar.cc/300?img={{ user.id|e > 70 ? 1:user.id|e }}" alt="project image"></span>
-                    <div class="portfolio-detail">
-                        <h5>{{ user.firstName ~ ' ' ~ user.lastName|e }}</h5>
-                        <p>{{ user.username|e }}</p>
-                    </div>
-                </a>
-            </div>
-        {% endfor %}
+        <nav class="nav nav-center nav-pills mb-7" data-shuffle="filter">
+            <a class="nav-link active" href="#" data-shuffle="button">All</a>
+            <a class="nav-link" href="#" data-shuffle="button" data-group="ROLE_ADMIN">Admins</a>
+            <a class="nav-link" href="#" data-shuffle="button" data-group="ROLE_USER">Users</a>
+        </nav>
 
+        <div class="" data-shuffle="list">
+            {% for user in users %}
+                <div class="col-6 col-lg-4" data-shuffle="item" data-groups="{{ user.roles|roles|join(',') }}">
+                    <a class="portfolio-1" href="{{ path('admin_user', {'id': user.id}) }}">
+                            <span class="iconbox iconbox-sq iconbox-xxl"><img
+                                        src="https://i.pravatar.cc/300?img={{ user.id|e > 70 ? 1:user.id|e }}"
+                                        alt="project image"></span>
+                        <div class="portfolio-detail">
+                            <h5>{{ user.firstName ~ ' ' ~ user.lastName|e }}</h5>
+                            <p>{{ user.username|e }}</p>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
     </div>
-   {# <h6 class="divider mt-7">More results?</h6>
-    <nav class="flexbox mb-2">
-        <a class="btn btn-primary disabled" href="#">Previous</a>
-        <a class="btn btn-primary" href="#">Next</a>
-    </nav>#}
 </div>
