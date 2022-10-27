@@ -22,7 +22,7 @@ class AdminController extends AbstractController
         $keyword = $request->request->get('keyword');
 
         // Ajax requests
-        if ($request->isXmlHttpRequest() && $keyword) {
+        if ($request->isXmlHttpRequest()) {
             $users = $userRepository->findByKeyword($keyword);
 
             return $this->render('sections/admin_users.html.twig', ['users' => $users, 'keyword' => $keyword]);
