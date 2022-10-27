@@ -1,13 +1,24 @@
-<div class="container">
+<div id="admin_users_container" class="container" {{ stimulus_controller('admin_users') }}>
     <div data-provide="shuffle">
+        <div class="row justify-content-md-center">
+            <div class="col-md-auto">
+                <nav class="nav nav-center nav-pills mb-7" data-shuffle="filter">
+                    <a class="nav-link active" href="#" data-shuffle="button">All</a>
+                    <a class="nav-link" href="#" data-shuffle="button" data-group="ROLE_ADMIN">Admins</a>
+                    <a class="nav-link" href="#" data-shuffle="button" data-group="ROLE_USER">Users</a>
+                </nav>
+            </div>
 
-        <nav class="nav nav-center nav-pills mb-7" data-shuffle="filter">
-            <a class="nav-link active" href="#" data-shuffle="button">All</a>
-            <a class="nav-link" href="#" data-shuffle="button" data-group="ROLE_ADMIN">Admins</a>
-            <a class="nav-link" href="#" data-shuffle="button" data-group="ROLE_USER">Users</a>
-        </nav>
-
-        <div class="" data-shuffle="list">
+            <div class="col-md-auto input-round">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text"><i class="ti-search"></i></div>
+                    </div>
+                    <input id="admin_users_search" class="form-control" type="text" placeholder="Search" data-search-target="{{ path('admin') }}" value="{{ keyword|default('') }}">
+                </div>
+            </div>
+        </div>
+        <div class="row" data-shuffle="list">
             {% for user in users %}
                 <div class="col-6 col-lg-4" data-shuffle="item" data-groups="{{ user.roles|roles|join(',') }}">
                     <a class="portfolio-1" href="{{ path('admin_user', {'id': user.id}) }}">
