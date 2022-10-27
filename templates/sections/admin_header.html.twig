@@ -1,24 +1,24 @@
 <!-- Header -->
 {% if template_part == 'admin_users' %}
-    <section id="basic" class="section text-white py-9">
+    {#    <section id="basic" class="section text-white py-9"> #}
+    {#        <canvas class="constellation" data-color="rgba(0,0,0,0.5)" data-length="300"></canvas> #}
+    <div class="container">
+        <header class="header">
+            <div class="container">
+                <small></small>
+                <h1 class="display-4 text-dark">Users Overview</h1>
+                <p class="lead-2 mt-6 text-dark">Here you can <span class="text-primary"
+                                                                    data-typing="create, update, add, delete, manage"
+                                                                    data-loop="false" data-back-delay="2000"
+                                                                    data-back-speed="100"></span> our super galactic
+                    Taxi
+                    drivers!
+                </p>
+            </div>
+        </header>
 
-        <canvas class="constellation" data-color="rgba(0,0,0,0.5)" data-length="300"></canvas>
-        <div class="container">
-            <header class="header">
-                <div class="container">
-                    <small></small>
-                    <h1 class="display-4 text-dark">Users Overview</h1>
-                    <p class="lead-2 mt-6 text-dark">Here you can <span class="text-primary"
-                                                              data-typing="create, update, add, delete, manage"
-                                                              data-loop="false" data-back-delay="2000"
-                                                              data-back-speed="100"></span> our super galactic Taxi
-                        drivers!
-                    </p>
-                </div>
-            </header>
-
-        </div>
-    </section>
+    </div>
+    {#    </section> #}
 {% elseif template_part == 'admin_user' %}
     <header class="header">
         <div class="container">

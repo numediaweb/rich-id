@@ -20,8 +20,6 @@ import './bootstrap';
 
 $(function() {
 
-  console.log('App is running :)');
-
   /*
   |--------------------------------------------------------------------------
   | Configure your website
